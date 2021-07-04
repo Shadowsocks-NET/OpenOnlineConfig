@@ -5,6 +5,8 @@ Open Online Config manages and maintains open protocols for the distribution of 
 ## Protocols
 
 0. [README](README.md) (2021-06-27)
+1. [Open Online Config Version 1](docs/0001-open-online-config-v1.md) (2021-07-04)
+2. [Open Online Config Version 1: Shadowsocks](docs/0002-open-online-config-v1-shadowsocks.md) (2021-07-04)
 
 ## How to Propose New Protocols
 
