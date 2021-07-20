@@ -103,12 +103,12 @@ Optional fields:
 - `bytesRemaining`: The amount of data remaining to be used by the user in bytes. MUST be greater than or equal to 0. An unsigned 64-bit integer MAY be used. MUST be accompanied by `bytesUsed`. Omit this field if no data limit is in place.
 - `expiryDate`: 64-bit Unix Epoch timestamp in seconds. The configuration is valid until this date. Clients MUST pull for updates and reload before this date. If the credentials are updated, the servers MUST stop accepting new connections with expired credentials. Existing connections with expired credentials MUST be maintained.
 
-You MAY include additional information with custom fields. Custom fields are not guaranteed to be supported by any client implementation. They MUST follow the `camelCase` naming convention, and MUST NOT have the same name as any registered protocol object name.
+Custom fields MAY be used to convey additional optional information. They MUST follow the `camelCase` naming convention, and MUST NOT have the same name as any registered protocol object name. The delivered config MUST NOT rely on any custom fields to function.
 
 ## 4. Protocol Registration
 
 A transport protocol MUST be registered and approved to become part of the standard.
 
-1. Prerequisites: You MUST be actively involved in the design and/or implementation of the protocol to qualify for registration. If the protocol is managed by an organization or a company, anyone approved by the entity to represent them is eligible.
-2. Registration: Open a pull request in this repository to add your standard document. The standard document MUST be written in English. The proposed changes MUST NOT cause conflicts or compatibility issues with existing configurations.
-4. Approval: Once the proposed changes are approved and merged, your registered protocol will officially become part of the standard of Open Online Config 1. You MAY refer to your protocol as `OOCv1:<protocol_name>`. For example, a registered `shadowsocks` protocol would be referred to as `OOCv1:shadowsocks`.
+1. Prerequisites: A person MUST be actively involved in the design and/or implementation of the protocol to qualify for registration. If the protocol is managed by an organization or a company, anyone approved by the entity to represent them is eligible.
+2. Registration: Open a pull request in this repository to add the standard document. The standard document MUST be written in English. The proposed changes MUST NOT cause conflicts or compatibility issues with existing configurations.
+4. Approval: Once the proposed changes are approved and merged, the registered protocol will officially become part of the standard of Open Online Config 1, and is referred to as `OOCv1:<protocol_name>`. For example, a registered `shadowsocks` protocol would be referred to as `OOCv1:shadowsocks`.
