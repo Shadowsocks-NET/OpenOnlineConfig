@@ -35,7 +35,7 @@ Clients communicate with servers by making API transactions.
 
 ### 2.1 Transport
 
-The web API MUST use HTTPS as the underlying transport. The minimum TLS version SHOULD be 1.3 to disallow week encryption and protect against TLS downgrade attacks.
+The web API MUST use HTTPS as the underlying transport. The minimum TLS version SHOULD be 1.3 to disallow week encryption and protect against TLS downgrade attacks. [HSTS (HTTP Strict Transport Security)](https://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security) SHOULD be deployed on the web server. Optimally, submit the domain name to the [HSTS preload list](https://hstspreload.org/). This prevents browsers from sending the initial request via an unsecured plain HTTP connection if the user enters the domain in the address bar without the protocol prefix.
 
 Certificates from a publicly-trusted CA SHOULD be used. Self-signed certificates MAY be used, in which case an accompanying certificate SHA-256 checksum must be provided for verification.
 
