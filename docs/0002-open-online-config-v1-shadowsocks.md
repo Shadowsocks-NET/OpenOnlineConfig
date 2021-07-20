@@ -27,9 +27,10 @@ Response JSON:
             "port": 8388,
             "method": "chacha20-ietf-poly1305",
             "password": "example",
-            "pluginPath": "/path/to/plugin-binary",
-            "pluginOpts": "whatever",
-            "pluginArgs": "-vvvvvv"
+            "pluginName": "plugin-name",
+            "pluginVersion": "1.0",
+            "pluginOptions": "whatever",
+            "pluginArguments": "-vvvvvv"
         }
     ]
 }
@@ -48,12 +49,15 @@ Required fields:
 
 Optional plugin fields:
 
-- `pluginPath`: Relative or absolute path to plugin executable binary. Required when using a plugin.
-- `pluginOpts`: Value of environment variable `SS_PLUGIN_OPTIONS`. Optional when using a plugin.
-- `pluginArgs`: Plugin executable startup arguments. Optional when using a plugin.
+- `pluginName`: Plugin name. Required when using a plugin.
+- `pluginVersion`: Required version of the plugin. Optional when using a plugin.
+- `pluginOptions`: Value of environment variable `SS_PLUGIN_OPTIONS`. Optional when using a plugin.
+- `pluginArguments`: Plugin executable startup arguments. Optional when using a plugin.
 
-Implementations should follow [SIP003](https://shadowsocks.org/en/wiki/Plugin.html), with the exception of `pluginArgs` field to allow more flexible configurations.
+Implementations MUST follow [SIP003](https://shadowsocks.org/en/wiki/Plugin.html), with the addition of `pluginArguments` field to allow more flexible configurations.
 
 Plugin support at both sides is optional. But clients without plugin support MUST be able to recognize servers with plugins and reject them.
+
+Client implementations with plugin support MUST maintain a user-configurable list of locally installed plugins with their name, version, and binary path on it. When connecting to a plugin-enabled server, the client resolves the plugin from the list by matching plugin name and version.
 
 If a server doesn't use a plugin, all plugin fields MUST be omitted.
