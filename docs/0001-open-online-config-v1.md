@@ -50,7 +50,7 @@ To access a web API, the following information is needed:
 - Base URL: The base URL for API transactions. The protocol scheme MUST be HTTPS. The URL MUST NOT contain a trailing slash. For example, `https://example.com`, `https://1.1.1.1:853` and `https://[2001:db8::1]:8443` are a valid base URLs. `http://example.com` and `https://example.com/` are invalid for the mentioned reasons.
 - Secret: Path to the API endpoint. This is required to conceal the presence of the API. The secret MAY contain zero or more forward slashes (/) to allow flexible path hierarchy. But it's recommended to put non-secret part of the path in the base URL.
 - User ID: A distinctive string that represents the user. A UUID or a random secret string MAY be used.
-- Certificate SHA-256 Checksum: Optional. Specifying this checksum indicates the use of self-signed certificates. Use lowercase charaters without colons. For example, `0ae384bfd4dde9d13e50c5857c05a442c93f8e01445ee4b34540d22bd1e37f1b`.
+- Certificate SHA-256 Fingerprint: Optional. Pin the server certificate by verifying the certificate fingerprint. Required only when using a self-signed certificate. The hash value MUST be a hexadecimal string with lowercase letters. For example, `0ae384bfd4dde9d13e50c5857c05a442c93f8e01445ee4b34540d22bd1e37f1b`.
 
 An __API token__ MAY be used to convey the API access information in a single string.
 
@@ -66,7 +66,9 @@ An __API token__ MAY be used to convey the API access information in a single st
 
 The `version` field MUST match the version of the Open Online Config protocol.
 
-The `certSha256` field MUST be present for a self-signed certificate, and MUST be omitted when it's from a publicly-trusted CA. The JSON string MAY be minified to fit in one line.
+The `certSha256` field is required when using a self-signed certificate. With a publicly-trusted certificate, this field SHOULD be omitted.
+
+The JSON string MAY be minified to fit in one line.
 
 ## 3. API Specification
 
