@@ -2,13 +2,13 @@
 
 ## 0. Abstract
 
-This document defines version 1 of the Open Online Config protocol. Open Online Config 1 (OOCv1) provides service providers and application developers with a simple and elegant solution for the delivery of censorship circumvention service configurations with unified support for different transport protocols.
+This document defines version 1 of the Open Online Config protocol. Open Online Config 1 (OOCv1) provides a simple and elegant solution for service providers and application developers to deliver censorship circumvention service configurations to users. Open Online Config 1 enables unified support for different transport protocols with a registration and standardization process.
 
 ## 1. Overview
 
-Open Online Config 1 is an HTTPS-based application protocol for the distribution of censorship circumvention services. The protocol aims to provide a centralized model for the sharing of distributed censorship circumvention services in a community.
+Open Online Config 1 is an HTTPS-based application protocol for the distribution of censorship circumvention services. The protocol aims to provide a centralized model for the sharing of distributed censorship circumvention services in communities.
 
-Servers are required to implement a basic web API for clients to retrieve configuration in the defined format. Additional API methods may be implemented for advanced operations.
+An Open Online Config 1 server exposes a web API for clients to retrieve configurations. A series of requirements for the web API are specified in this document to ensure the secure transport of sensitive information. The API response is based on the minimal JSON format defined in this document. Extension standards add additional fields to support different transport protocols.
 
 ### 1.1. Document Structure
 
@@ -47,7 +47,7 @@ Servers MUST respond with the correct format, content type and the UTF-8 charate
 
 To access a web API, the following information is needed:
 
-- Base URL: The base URL for API transactions. The protocol scheme MUST be HTTPS. The URL MUST NOT contain a trailing slash. For example, `https://example.com`, `https://1.1.1.1:853` and `https://[2001:db8::1]:8443` are a valid base URLs. `http://example.com` and `https://example.com/` are invalid for the mentioned reasons.
+- Base URL: The base URL for API transactions. The protocol scheme MUST be HTTPS. The URL MUST NOT contain a trailing slash. For example, `https://example.com`, `https://1.1.1.1:853` and `https://[2001:db8::1]:8443` are valid base URLs. `http://example.com` and `https://example.com/` are invalid because they do not meet the protocol scheme and trailing slash requirements.
 - Secret: Path to the API endpoint. This is required to conceal the presence of the API. The secret MAY contain zero or more forward slashes (/) to allow flexible path hierarchy. But it's recommended to put non-secret part of the path in the base URL.
 - User ID: A distinctive string that represents the user. A UUID or a random secret string MAY be used.
 - Certificate SHA-256 Fingerprint: Optional. Pin the server certificate by verifying the certificate fingerprint. Required only when using a self-signed certificate. The hash value MUST be a hexadecimal string with lowercase letters. For example, `0ae384bfd4dde9d13e50c5857c05a442c93f8e01445ee4b34540d22bd1e37f1b`.
