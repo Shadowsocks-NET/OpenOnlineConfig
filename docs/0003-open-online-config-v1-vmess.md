@@ -24,7 +24,12 @@ Response JSON:
             "address": "example.com",
             "port": 8388,
             "security": "auto",
-            "password": "example"
+            "password": "example",
+            "stream": {
+                "network": "tcp",
+                "security": "none",
+            },
+            "mux": 0,
         }
     ]
 }
@@ -40,3 +45,10 @@ Required fields:
 - `port`: Server port number.
 - `security`: encryption method. Valid values: `auto`, `zero`, `none`, `aes-128-gcm`, `chacha20-poly1305`.
 - `password`: Password. Not the derived key.
+
+Optional fields:
+
+- `stream`: StreamSettingsObject.
+    - `network`: Stream Netwokr Type. Valid values: `tcp`, `kcp`, `ws`, `http`, `quic`, `grpc`.
+    - `security`: Transport layer encryption. Valid values: `none`, `tls`.
+- `mux`: 0 Means disabled. Used by clients to distinguish and persist servers when reloading.
