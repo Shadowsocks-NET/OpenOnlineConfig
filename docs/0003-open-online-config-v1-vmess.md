@@ -51,4 +51,4 @@ Optional fields:
 - `stream`: StreamSettingsObject.
     - `network`: Stream Netwokr Type. Valid values: `tcp`, `kcp`, `ws`, `http`, `quic`, `grpc`.
     - `security`: Transport layer encryption. Valid values: `none`, `tls`.
-- `mux`: 0 Means disabled. Used by clients to distinguish and persist servers when reloading.
+- `mux`: 0 Means disabled. Available range 1 - 8.
